@@ -1,0 +1,53 @@
+<html>
+<body>
+
+    
+    <label for="num1"></label>
+    <input type="text" id="num1">
+    <br>
+
+    <label for="num2"></label>
+    <input type="text" id="num2" >
+    <br>
+
+    
+    <div id="risultato"></div>
+
+    <input type="button" value="+" onclick="calc('+')">
+    <input type="button" value="-" onclick="calc('-')">
+    <input type="button" value="*" onclick="calc('*')">
+    <input type="button" value="/" onclick="calc('/')">
+ 
+
+  <script>
+    function calc(operazioni) {
+     
+
+
+        
+
+
+      var num1 = parseFloat(document.getElementById('num1').value);
+      var num2 = parseFloat(document.getElementById('num2').value);
+
+      var risultato = 0;
+
+     
+       if (operazioni == '+') {
+        risultato = num1 + num2;
+        document.getElementById('risultato').textContent = '= ' +  risultato;
+      } else if (operazioni=== '-') {
+        risultato = num1 - num2;
+        document.getElementById('risultato').textContent = '= ' + risultato;
+      } else if (operazioni === '*') {
+        risultato = num1 * num2;
+        document.getElementById('risultato').textContent = '=' + risultato;
+      } else if (operazioni === '/') {
+        risultato = num1 / num2;
+        document.getElementById('risultato').textContent = '= ' + risultato;
+      }
+    
+    }
+  </script>
+</body>
+</html>
