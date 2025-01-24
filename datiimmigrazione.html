@@ -1,0 +1,63 @@
+<html>
+<head>
+    
+    <style>
+        body {
+            font-family: Georgia, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #1500ff;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #1500ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Importa CSV e Visualizza Tabella</h1>
+    <input type="file" id="fileInput" accept=".csv">
+    <table id="csvTable">
+    </table>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    const rows = content.split('\n');
+
+                    const table = document.getElementById('csvTable');
+                    table.innerHTML = '';
+
+                    rows.forEach((row, rowIndex) => {
+                        const cols = row.split(',');
+                        const tr = document.createElement('tr');
+
+                        cols.forEach(col => {
+                            const cell = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
+                            cell.textContent = col.trim();
+                            tr.appendChild(cell);
+                        });
+
+                        table.appendChild(tr);
+                    });
+                };
+
+                reader.readAsText(file);
+            }
+        });
+    </script>
+</body>
+</html>
