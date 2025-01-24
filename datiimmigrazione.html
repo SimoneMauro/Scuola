@@ -24,7 +24,7 @@
 <body>
     <h1>Importa CSV e Visualizza Tabella</h1>
     <input type="file" id="fileInput" accept=".csv">
-    <table id="csvTable">
+    <table id="tabellacsv">
     </table>
     <script>
         document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -34,7 +34,7 @@
                 reader.onload = function(e) {
                     const content = e.target.result;
                     const rows = content.split('\n');
-                    const table = document.getElementById('csvTable');
+                    const table = document.getElementById('tabellacsv');
                     table.innerHTML = '';
                     rows.forEach((row, rowIndex) => {
                         const cols = row.split(',');
