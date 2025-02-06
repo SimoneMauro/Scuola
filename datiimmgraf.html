@@ -16,7 +16,7 @@
   <script>
   let result = []
 
-    let nSegmentiY = 10
+    let nSegmentY = 10
     
     let dotEnable = false;
     
@@ -49,7 +49,7 @@
             let lenghtX = Math.round(Math.sqrt(Math.abs((lenght/15)**2-(lenght/1.1)**2)))
             const divisoreX = Math.round(lungX / csv.length)
             let lenghtX = Math.round(Math.sqrt(Math.abs((lenght/12)**2-(lenght/1.15)**2)))
-            const divisoreY = Math.round(lungY / nSegmentiY)
+            const divisoreY = Math.round(lungY / nSegmentY)
             let max = Number(csv[1][1].replaceAll('"', ''))
             
             for (let i in csv) {
@@ -65,10 +65,10 @@
             }
     
             let newMax = ((Number(max.toString()[0])+1) * (10**(getPow(max)-1))) 
-            for (let i of Array(nSegmentiY).keys()) {
+            for (let i of Array(nSegmentY).keys()) {
                 ctx.moveTo(lenght/15, height/15*12-(divisoreY*i)/3)
                 ctx.lineTo(lenght/15-30, height/15*12-(divisoreY*i)/3)
-                ctx.fillText((newMax/nSegmentiY)*(i+1), lenght/15-50, (height/15*12-(divisoreY*i)/3)-5)
+                ctx.fillText((newMax/nSegmentY)*(i+1), lenght/15-50, (height/15*12-(divisoreY*i)/3)-5)
             }
             ctx.stroke()
             ctx.moveTo(lenght/15,height/1.155)
@@ -76,9 +76,9 @@
             for (let i in csv) {
                 i++
                 let effData = csv[i].split(",")
-                ctx.lineTo(lenght/15+divisoreX*i, height/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)))
+                ctx.lineTo(lenght/15+divisoreX*i, height/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentY)))
                 ctx.stroke()
-                if (dotEnable) {drawPoint(lenght/15+divisoreX*i, height/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)), ctx) }
+                if (dotEnable) {drawPoint(lenght/15+divisoreX*i, height/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentY)), ctx) }
             }
             ctx.stroke()
         }
