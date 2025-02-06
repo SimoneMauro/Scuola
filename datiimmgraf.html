@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <br>
+        <h1 class="title">Grafico</h1>
+        <form action="">
+            <input class="form-control" type="file" id="fileUp" onchange="readFile(this)">
+            <br>
+            <input class="btn btn-outline-g btn-lg" type="button" value="Genera grafico" onclick="draw()">
+        </form>
+        <canvas id="canva" width="1400%" height="620%"></canvas>
+</body>
+  <script>
+  let result = []
+
+    let nSegmentiY = 10
+    
+    let dotEnable = false;
+    
+    function readFile(input) {
+        let file = input.files[0];
+      let reader = new FileReader();
+       reader.readAsText(file);
+      reader.onload = function() {
+          result = reader.result;
+        };
+      reader.onerror = function() {
+          alert(reader.error);
+        };
+    }
+    
+    function draw() {
+        if (!result.length) {
+            alert("File mancabte")
+        } else {
+            let c = document.getElementById("canva");
+            var larghezza = c.width;
+            var altezza= c.height;
+            let ctx = c.getContext("2d");
+            ctx.lineWidth = 2;
+
+            
+    
+            //asse Y
+            ctx.moveTo(larghezza/15, altezza/6);
+            ctx.lineTo(larghezza/15, altezza/1.1);
+            
+            //asse X
+            ctx.moveTo(larghezza/20, altezza/15*13);
+            ctx.lineTo(larghezza/1.05, altezza/15*13);
+    
+            let csv = result.split("\n")
+    
+            // Lung asse X
+            let lungX = Math.round(Math.sqrt(Math.abs((larghezza/15)**2-(larghezza/1.1)**2)))
+            const divisoreX = Math.round(lungX / csv.length)
+    
+            // Lung asse Y
+            let lungY = Math.round(Math.sqrt(Math.abs((larghezza/12)**2-(larghezza/1.15)**2)))
+            const divisoreY = Math.round(lungY / nSegmentiY)
+    
+            // Vmax asse Y
+            let max = Number(csv[1][1].replaceAll('"', ''))
+            
+            for (let i in csv) {
+                if (i!=0) {
+                    let effData = csv[i].split(",")
+    
+                    // valori x
+                    ctx.moveTo(larghezza/15+divisoreX*i,altezza/15*13)
+                    ctx.lineTo(larghezza/15+divisoreX*i, altezza/30*27)
+                    ctx.fillText(effData[0].replaceAll('"', ''), larghezza/15+divisoreX*i+2, altezza/30*27+2);
+    
+                    if (Number(effData[1].replaceAll('"', '')) > max) {
+                        max = Number(effData[1].replaceAll('"', ''))
+                    }
+                }
+            }
+    
+            let newMax = ((Number(max.toString()[0])+1) * (10**(getPow(max)-1))) 
+            for (let i of Array(nSegmentiY).keys()) {
+                // valori y
+                ctx.moveTo(larghezza/15, altezza/15*12-(divisoreY*i)/3)
+                ctx.lineTo(larghezza/15-30, altezza/15*12-(divisoreY*i)/3)
+                ctx.fillText((newMax/nSegmentiY)*(i+1), larghezza/15-50, (altezza/15*12-(divisoreY*i)/3)-5)
+            }
+            ctx.stroke()
+            
+            // grafico inizia da 0x 0y
+            ctx.moveTo(larghezza/15,altezza/1.155)
+    
+            // Disegna grafico
+            for (let i in csv) {
+                i++
+                let effData = csv[i].split(",")
+                ctx.lineTo(larghezza/15+divisoreX*i, altezza/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)))
+                ctx.stroke()
+                if (dotEnable) {drawPoint(larghezza/15+divisoreX*i, altezza/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)), ctx) }
+            }
+            ctx.stroke()
+        }
+    }
+    
+    function drawPoint(x,y,canvas) {
+        canvas.beginPath();
+        canvas.fillStyle = "red";
+        canvas.arc(x, y, 5, 0, Math.PI*2, true);
+        canvas.fill();
+    }
+    
+    // funzione per la potenza del 10 del numero
+    function getPow(numb) {
+        return(Number(numb.toString().length))
+    }
+    </script>
+</html> 
