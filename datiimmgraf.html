@@ -34,30 +34,30 @@
     
     function draw() {
         if (!result.length) {
-            alert("File mancabte")
+            alert("Nessun file")
         } else {
             let c = document.getElementById("canvass");
-            var larghezza = c.width;
-            var altezza= c.height;
+            var lenght = c.width;
+            var height= c.height;
             let ctx = c.getContext("2d");
             ctx.lineWidth = 2;
-            ctx.moveTo(larghezza/15, altezza/6);
-            ctx.lineTo(larghezza/15, altezza/1.1);
-            ctx.moveTo(larghezza/20, altezza/15*13);
-            ctx.lineTo(larghezza/1.05, altezza/15*13);
+            ctx.moveTo(lenght/15, height/6);
+            ctx.lineTo(lenght/15, height/1.1);
+            ctx.moveTo(lenght/20, height/15*13);
+            ctx.lineTo(lenght/1.05, height/15*13);
             let csv = result.split("\n")
-            let lungX = Math.round(Math.sqrt(Math.abs((larghezza/15)**2-(larghezza/1.1)**2)))
+            let lenghtX = Math.round(Math.sqrt(Math.abs((lenght/15)**2-(lenght/1.1)**2)))
             const divisoreX = Math.round(lungX / csv.length)
-            let lungY = Math.round(Math.sqrt(Math.abs((larghezza/12)**2-(larghezza/1.15)**2)))
+            let lenghtX = Math.round(Math.sqrt(Math.abs((lenght/12)**2-(lenght/1.15)**2)))
             const divisoreY = Math.round(lungY / nSegmentiY)
             let max = Number(csv[1][1].replaceAll('"', ''))
             
             for (let i in csv) {
                 if (i!=0) {
                     let effData = csv[i].split(",")
-                    ctx.moveTo(larghezza/15+divisoreX*i,altezza/15*13)
-                    ctx.lineTo(larghezza/15+divisoreX*i, altezza/30*27)
-                    ctx.fillText(effData[0].replaceAll('"', ''), larghezza/15+divisoreX*i+2, altezza/30*27+2);
+                    ctx.moveTo(lenght/15+divisoreX*i,height/15*13)
+                    ctx.lineTo(lenght/15+divisoreX*i,height/30*27)
+                    ctx.fillText(effData[0].replaceAll('"', ''), lenght/15+divisoreX*i+2,height/30*27+2);
                     if (Number(effData[1].replaceAll('"', '')) > max) {
                         max = Number(effData[1].replaceAll('"', ''))
                     }
@@ -66,19 +66,19 @@
     
             let newMax = ((Number(max.toString()[0])+1) * (10**(getPow(max)-1))) 
             for (let i of Array(nSegmentiY).keys()) {
-                ctx.moveTo(larghezza/15, altezza/15*12-(divisoreY*i)/3)
-                ctx.lineTo(larghezza/15-30, altezza/15*12-(divisoreY*i)/3)
-                ctx.fillText((newMax/nSegmentiY)*(i+1), larghezza/15-50, (altezza/15*12-(divisoreY*i)/3)-5)
+                ctx.moveTo(lenght/15, height/15*12-(divisoreY*i)/3)
+                ctx.lineTo(lenght/15-30, height/15*12-(divisoreY*i)/3)
+                ctx.fillText((newMax/nSegmentiY)*(i+1), lenght/15-50, (height/15*12-(divisoreY*i)/3)-5)
             }
             ctx.stroke()
-            ctx.moveTo(larghezza/15,altezza/1.155)
+            ctx.moveTo(lenght/15,height/1.155)
     
             for (let i in csv) {
                 i++
                 let effData = csv[i].split(",")
-                ctx.lineTo(larghezza/15+divisoreX*i, altezza/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)))
+                ctx.lineTo(lenght/15+divisoreX*i, height/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)))
                 ctx.stroke()
-                if (dotEnable) {drawPoint(larghezza/15+divisoreX*i, altezza/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)), ctx) }
+                if (dotEnable) {drawPoint(lenght/15+divisoreX*i, height/1.155 - 45*(Number(effData[1].replaceAll('"', '')) / (newMax/nSegmentiY)), ctx) }
             }
             ctx.stroke()
         }
