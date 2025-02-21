@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiungi Utenti</title>
+    <script>
+        function salvaUtente() {
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+            let email = document.getElementById("email").value;
+
+            if (nome === "" || cognome === "" || email === "") {
+                alert("Compila tutti i campi!");
+                return;
+            }
+
+            let utente = { nome, cognome, email };
+            
+            let utenti = JSON.parse(localStorage.getItem("utenti")) || [];
+            utenti.push(utente);
+
+            localStorage.setItem("utenti", JSON.stringify(utenti));
+
+            document.getElementById("nome").value = "";
+            document.getElementById("cognome").value = "";
+            document.getElementById("email").value = "";
+
+            alert("Utente salvato!");
+        }
+    </script>
+</head>
+<body>
+    <h2>Aggiungi un utente</h2>
+    <label>Nome: <input type="text" id="nome"></label><br>
+    <label>Cognome: <input type="text" id="cognome"></label><br>
+    <label>Email: <input type="email" id="email"></label><br>
+    <button onclick="salvaUtente()">Salva</button>
+    <br><br>
+    <a href="vettoreee.html">Visualizza Utenti</a>
+</body>
+</html>
