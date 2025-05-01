@@ -1,0 +1,26 @@
+[
+  {
+    "categoria": "Smartphone",
+    "nome": "iPhone 14",
+    "marca": "Apple",
+    "prezzo": 999,
+    "descrizione": "Display Super Retina XDR, chip A15 Bionic.",
+    "immagine": "https://example.com/iphone.jpg"
+  },
+  {
+    "categoria": "Automobile",
+    "nome": "Fiat Panda",
+    "marca": "Fiat",
+    "prezzo": 11500,
+    "descrizione": "Utilitaria compatta ideale per la città.",
+    "immagine": "https://example.com/panda.jpg"
+  },
+  {
+    "categoria": "Computer",
+    "nome": "MacBook Air M2",
+    "marca": "Apple",
+    "prezzo": 1299,
+    "descrizione": "Leggero, veloce e potente.",
+    "immagine": "https://example.com/macbook.jpg"
+  }
+]
