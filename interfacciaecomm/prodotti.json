@@ -5,7 +5,7 @@
     "marca": "Fiat",
     "prezzo": 11500,
     "descrizione": "Utilitaria compatta ideale per la città.",
-    "immagine": "https://example.com/panda.jpg"
+    "immagine": "img/panda.jpg"
   },
   {
     "categoria": "Automobile",
@@ -13,7 +13,7 @@
     "marca": "Volkswagen",
     "prezzo": 21000,
     "descrizione": "Compatta di alta qualità con ottime prestazioni.",
-    "immagine": "https://example.com/golf.jpg"
+    "immagine": "img/golf.jpg"
   },
   {
     "categoria": "Automobile",
@@ -21,6 +21,6 @@
     "marca": "Tesla",
     "prezzo": 39990,
     "descrizione": "Auto elettrica con autonomia superiore a 400 km.",
-    "immagine": "https://example.com/model3.jpg"
+    "immagine": "img/model3.jpg"
   }
 ]
