@@ -3,8 +3,9 @@ let products = [];
 fetch('prodotti.json')
   .then(response => response.json())
   .then(data => {
+    // Mantieni solo le automobili
     products = data.filter(p => p.categoria === "Automobile");
-    renderProducts(products); 
+    renderProducts(products);
   })
   .catch(err => console.error("Errore nel caricamento:", err));
 
