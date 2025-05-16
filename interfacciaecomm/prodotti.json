@@ -1,13 +1,5 @@
 [
   {
-    "categoria": "Smartphone",
-    "nome": "iPhone 14",
-    "marca": "Apple",
-    "prezzo": 999,
-    "descrizione": "Display Super Retina XDR, chip A15 Bionic.",
-    "immagine": "https://example.com/iphone.jpg"
-  },
-  {
     "categoria": "Automobile",
     "nome": "Fiat Panda",
     "marca": "Fiat",
@@ -16,11 +8,19 @@
     "immagine": "https://example.com/panda.jpg"
   },
   {
-    "categoria": "Computer",
-    "nome": "MacBook Air M2",
-    "marca": "Apple",
-    "prezzo": 1299,
-    "descrizione": "Leggero, veloce e potente.",
-    "immagine": "https://example.com/macbook.jpg"
+    "categoria": "Automobile",
+    "nome": "Volkswagen Golf",
+    "marca": "Volkswagen",
+    "prezzo": 21000,
+    "descrizione": "Compatta di alta qualità con ottime prestazioni.",
+    "immagine": "https://example.com/golf.jpg"
+  },
+  {
+    "categoria": "Automobile",
+    "nome": "Tesla Model 3",
+    "marca": "Tesla",
+    "prezzo": 39990,
+    "descrizione": "Auto elettrica con autonomia superiore a 400 km.",
+    "immagine": "https://example.com/model3.jpg"
   }
 ]
