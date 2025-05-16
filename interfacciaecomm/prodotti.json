@@ -13,7 +13,7 @@
     "marca": "Volkswagen",
     "prezzo": 21000,
     "descrizione": "Compatta di alta qualità con ottime prestazioni.",
-    "immagine": "img/golf.jpg"
+    "immagine": "img/golf.jpeg"
   },
   {
     "categoria": "Automobile",
@@ -21,6 +21,6 @@
     "marca": "Tesla",
     "prezzo": 39990,
     "descrizione": "Auto elettrica con autonomia superiore a 400 km.",
-    "immagine": "img/model3.jpg"
+    "immagine": "img/model3.jpeg"
   }
 ]
